@@ -2,6 +2,7 @@ package cn.xzxy.lewy.mongodb.service.impl;
 
 import cn.xzxy.lewy.mongodb.dao.PlayerDao;
 import cn.xzxy.lewy.mongodb.pojo.Player;
+import cn.xzxy.lewy.mongodb.pojo.PlayerMongo;
 import cn.xzxy.lewy.mongodb.service.PlayerService;
 import org.springframework.stereotype.Service;
 
