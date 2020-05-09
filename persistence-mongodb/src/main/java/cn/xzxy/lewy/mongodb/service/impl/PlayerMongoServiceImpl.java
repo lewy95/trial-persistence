@@ -13,12 +13,11 @@ import java.util.List;
 /**
  * @author lewy
  */
-@Service
+@Service("playerMongoService")
 public class PlayerMongoServiceImpl implements PlayerMongoService {
 
     @Resource
     PlayerMongoDao playerMongoDao;
-
 
     @Override
     @Transactional(rollbackFor = Exception.class)
