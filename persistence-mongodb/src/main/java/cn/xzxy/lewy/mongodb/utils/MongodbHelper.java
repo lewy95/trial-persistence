@@ -5,7 +5,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.mongodb.client.ListIndexesIterable;
 import com.mongodb.client.model.IndexOptions;
 import com.mongodb.client.model.Indexes;
+import com.mongodb.client.result.DeleteResult;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -101,7 +103,7 @@ public class MongodbHelper {
      *
      * @param infos 对象列表
      */
-    public void insertMulti(List<Object> infos, String collectionName) {
+    public void insertMulti(List<?> infos, String collectionName) {
 
         mongoTemplate.insert(infos, collectionName);
     }
@@ -109,26 +111,44 @@ public class MongodbHelper {
     /**
      * 指定集合 根据数据对象中的id删除数据
      *
-     * @param obj            数据对象
+     * @param id             _id 对应的value
      * @param collectionName 集合名
      */
-    public void remove(Object obj, String collectionName) {
+    public void removeById(String id, String collectionName) {
 
-        mongoTemplate.remove(obj, collectionName);
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").in((Object) convertObjectId(id)));
+        mongoTemplate.remove(query, collectionName);
     }
 
     /**
      * 根据key，value到指定集合删除数据
      *
-     * @param key            键
-     * @param value          值
+     * @param keys            键
+     * @param values          值
      * @param collectionName 集合名
      */
-    public void removeByKey(String key, Object value, String collectionName) {
+    public void removeByKey(String[] keys, Object[] values, String collectionName) {
 
-        Criteria criteria = Criteria.where(key).is(value);
-        criteria.and(key).is(value);
+        Criteria criteria = null;
+        for (int i = 0; i < keys.length; i++) {
+            if (i == 0) {
+                criteria = Criteria.where(keys[i]).is(values[i]);
+            } else {
+                criteria.and(keys[i]).is(values[i]);
+            }
+        }
         Query query = Query.query(criteria);
+        mongoTemplate.remove(query, collectionName);
+    }
+
+    /**
+     * 指定集合 删除集合中所有数据
+     *
+     * @param collectionName 集合名
+     */
+    public void removeAll(String collectionName) {
+        Query query = new Query();
         mongoTemplate.remove(query, collectionName);
     }
 
@@ -464,5 +484,28 @@ public class MongodbHelper {
      */
     public List<?> findAll(Object obj) {
         return mongoTemplate.findAll(obj.getClass());
+    }
+
+    // --------------------- 通用转换-------------------------------
+    /**
+     * 转换为ObjectId
+     *
+     * @param ids 多id
+     * @return ObjectId[]
+     */
+    private ObjectId[] convertObjectId(String... ids) {
+        if (ids == null) {
+            return new ObjectId[0];
+        }
+        ObjectId[] objectIds = new ObjectId[ids.length];
+
+        if (ids.length == 0) {
+            return objectIds;
+        }
+
+        for (int i = 0; i < ids.length; i++) {
+            objectIds[i] = new ObjectId(ids[i]);
+        }
+        return objectIds;
     }
 }

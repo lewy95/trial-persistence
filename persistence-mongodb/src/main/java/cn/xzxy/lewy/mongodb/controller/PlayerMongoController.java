@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -115,6 +116,7 @@ public class PlayerMongoController {
         return "SUCCESS";
     }
 
+    // 单个文档保存，需要指定集合名称
     @PostMapping(value = "save")
     public Object save() {
         PlayerDto playerDto = new PlayerDto();
@@ -128,20 +130,70 @@ public class PlayerMongoController {
         return mongodbHelper.save(playerDto, COLLECTION);
     }
 
-    @PostMapping(value = "saveWithoutDocument")
-    public Object saveWithoutDocument() {
+    // 单个文档保存，根据实体类上的@Document注解自动映射集合
+    @PostMapping(value = "saveAuto")
+    public Object saveAuto() {
         PlayerDto playerDto = new PlayerDto();
-        playerDto.setPlayerId("990006");
-        playerDto.setPlayerName("kimmich");
-        playerDto.setPlayerNumber(32);
-        playerDto.setPlayerAge(24);
-        playerDto.setCreateDate("2020-05-16 09:12:34");
-        playerDto.setUpdateDate("2020-05-16 09:12:34");
+        playerDto.setPlayerId("990005");
+        playerDto.setPlayerName("alaba");
+        playerDto.setPlayerNumber(27);
+        playerDto.setPlayerAge(27);
+        playerDto.setCreateDate("2020-05-14 09:12:34");
+        playerDto.setUpdateDate("2020-05-14 09:12:34");
 
-        return mongodbHelper.save(playerDto);
+        return mongodbHelper.save(playerDto, COLLECTION);
     }
 
+    // 多个文档保存
+    @PostMapping(value = "insertMulti")
+    public String insertMulti() {
+        PlayerDto playerDto1 = new PlayerDto();
+        playerDto1.setPlayerId("990008");
+        playerDto1.setPlayerName("leno");
+        playerDto1.setPlayerNumber(18);
+        playerDto1.setPlayerAge(24);
+        playerDto1.setCreateDate("2020-05-16 09:12:34");
+        playerDto1.setUpdateDate("2020-05-16 09:12:34");
 
+        PlayerDto playerDto2 = new PlayerDto();
+        playerDto2.setPlayerId("990007");
+        playerDto2.setPlayerName("thiago");
+        playerDto2.setPlayerNumber(6);
+        playerDto2.setPlayerAge(29);
+        playerDto2.setCreateDate("2020-05-17 09:12:34");
+        playerDto2.setUpdateDate("2020-05-17 09:12:34");
+
+        List<PlayerDto> list = new ArrayList<>();
+        list.add(playerDto1);
+        list.add(playerDto2);
+
+        mongodbHelper.insertMulti(list, COLLECTION);
+
+        return "SUCCESS";
+    }
+
+    // 根据指定条件删除
+    @PostMapping(value = "removeByKey")
+    public String removeByKey() {
+        String[] removeKey = {"createDate", "playerName"};
+        Object[] removeValue = {"2020-05-16 09:12:34", "leno"};
+        mongodbHelper.removeByKey(removeKey, removeValue, COLLECTION);
+        return "SUCCESS";
+    }
+
+    // 根据ID删除文档
+    @PostMapping(value = "removeById")
+    public String removeById() {
+        mongodbHelper.removeById("5eb9514cc59722271fb691e4", COLLECTION);
+        return "SUCCESS";
+    }
+
+    // 删除集合中所有文档
+    @PostMapping(value = "removeAll")
+    public String removeAll() {
+        mongodbHelper.removeAll(COLLECTION);
+        return "SUCCESS";
+    }
 
 
 }
