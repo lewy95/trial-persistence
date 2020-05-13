@@ -7,14 +7,16 @@
         <groupId>cn.xzxy.lewy</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>persistence-mongodb</artifactId>
-    <name>persistence-mongodb</name>
-    <description>Spring Boot2.x integrated with mongodb</description>
+
+    <artifactId>persistence-redis</artifactId>
+    <name>persistence-redis</name>
+    <description>rSpring Boot2.x integrated with redis</description>
 
     <properties>
         <java.version>1.8</java.version>
         <mysql.version>8.0.19</mysql.version>
-        <hibernate-core.version>5.2.10.Final</hibernate-core.version>
+        <redis.clients.jedis.version>3.0.1</redis.clients.jedis.version>
+        <commons-io.version>2.5</commons-io.version>
         <lombok.version>1.18.12</lombok.version>
         <fastjson.version>1.2.60</fastjson.version>
     </properties>
@@ -22,35 +24,26 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hibernate</groupId>
-                    <artifactId>hibernate-entitymanager</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.hibernate</groupId>
-                    <artifactId>hibernate-core</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate-core.version}</version>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${redis.clients.jedis.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -65,6 +58,7 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>

@@ -1,0 +1,28 @@
+server:
+  servlet:
+    context-path: /redis95
+  port: 8083
+
+spring:
+  application:
+    name: persistence-redis
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sakila?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+  # redis 集群模式（非哨兵）
+  #redis:
+  #  cluster:
+  #    nodes: 192.168.26.121:6379,192.168.26.123:6379,192.168.26.123:6379
+
+  # redis 集群模式（哨兵）
+  #redis:
+  #  sentinel:
+  #    master: mymaster
+  #    nodes: 192.168.26.121:6379,192.168.26.123:6379,192.168.26.123:6379
