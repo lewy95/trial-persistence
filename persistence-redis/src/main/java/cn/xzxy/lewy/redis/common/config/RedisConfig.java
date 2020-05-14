@@ -31,25 +31,25 @@ import java.util.Objects;
  * @author lewy
  */
 @Configuration
-@PropertySource("classpath:redis.properties")
+@PropertySource("classpath:redis-single.properties")
 @Slf4j
 public class RedisConfig {
 
-    @Value("${redis.hostName}")
+    @Value("${redis.hosts}")
     private String hostName;
 
     @Value("${redis.port}")
     private Integer port;
 
     // 集群模式（非哨兵）
-    //@Value("${spring.redis.cluster.nodes}")
+    //@Value("${redis.cluster.nodes}")
     //private String clusterHost;
 
     // 集群模式（哨兵）
-    //@Value("${spring.redis.sentinel.master}")
+    //@Value("${redis.sentinel.master}")
     //private String sentinelMaster;
 
-    //@Value("${spring.redis.sentinel.nodes}")
+    //@Value("${redis.sentinel.nodes}")
     //private String sentinelHosts;
 
     @Value("${redis.password}")
