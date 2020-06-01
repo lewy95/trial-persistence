@@ -60,9 +60,11 @@ spring:
     #    enabled: true
     #    additional-paths: src/main/java
 
-mybatis:
+# mybatis-plus相关配置
+mybatis-plus:
+  # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
   mapper-locations: classpath:mapping/*Mapper.xml
-  type-aliases-package: cn.xzxy.lewy.mybatis.pojo
+  type-aliases-package: cn.xzxy.lewy.mybatisplus.pojo
 
 #showSql
 logging:
