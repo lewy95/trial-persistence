@@ -7,7 +7,7 @@
  
 # files for the dex VM
 *.dex
- 
+
 # Java class files
 *.class
 *.jar
@@ -100,4 +100,4 @@ release.properties
 # IntelliJ project files
 out
 gen
-!/.idea/compiler.xml
+/.idea/compiler.xml
