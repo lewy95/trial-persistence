@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="persistence-mongodb" />
-        <module name="persistence95" />
         <module name="persistence-mybatis" />
+        <module name="persistence95" />
+        <module name="persistence-redis" />
+        <module name="persistence-mybatis-plus" />
       </profile>
     </annotationProcessing>
   </component>
@@ -16,6 +18,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="persistence-mongodb" options="-parameters" />
       <module name="persistence-mybatis" options="-parameters" />
+      <module name="persistence-mybatis-plus" options="-parameters" />
+      <module name="persistence-redis" options="-parameters" />
       <module name="persistence95" options="-parameters" />
     </option>
   </component>
