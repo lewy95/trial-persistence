@@ -7,46 +7,33 @@
         <groupId>cn.xzxy.lewy</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>persistence-mongodb</artifactId>
-    <name>persistence-mongodb</name>
-    <description>Spring Boot2.x integrated with mongodb</description>
+    <artifactId>persistence-mybatis-plus</artifactId>
+    <name>persistence-mybatis-plus</name>
+    <description>Spring Boot2.x integrated with mybatis-plus</description>
 
     <properties>
         <java.version>1.8</java.version>
+        <druid-spring-boot.version>1.1.21</druid-spring-boot.version>
         <mysql.version>8.0.19</mysql.version>
-        <hibernate-core.version>5.2.10.Final</hibernate-core.version>
+        <mybatis-plus.vsersion>3.3.0</mybatis-plus.vsersion>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hibernate</groupId>
-                    <artifactId>hibernate-entitymanager</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.hibernate</groupId>
-                    <artifactId>hibernate-core</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate-core.version}</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.vsersion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid-spring-boot.version}</version>
         </dependency>
 
         <dependency>
@@ -59,6 +46,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
