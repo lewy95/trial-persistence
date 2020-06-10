@@ -69,6 +69,8 @@ mybatis-plus:
 #showSql
 logging:
   level:
-    com:
-      example:
-        mapper : debug
+    cn:
+      xzxy:
+        lewy:
+          mybatisplus:
+            dao: debug

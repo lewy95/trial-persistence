@@ -1,12 +1,14 @@
 package cn.xzxy.lewy.mybatis.controller;
 
+import cn.xzxy.lewy.mybatis.dto.CountryDetailReq;
 import cn.xzxy.lewy.mybatis.service.CountryService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
+@Api(tags = "城市管理相关接口")
 @RestController
 @RequestMapping("/rest/country")
 public class CountryController {
@@ -14,8 +16,9 @@ public class CountryController {
     @Resource
     private CountryService countryService;
 
-    @RequestMapping("detail/{id}")
-    public String getCountry(@PathVariable int id) {
-        return countryService.getCountry(id).toString();
+    @PostMapping("detail")
+    @ApiOperation(value = "根据ID查询城市", notes = "根据ID查询城市")
+    public String getCountry(@RequestBody CountryDetailReq countryDetailReq) {
+        return countryService.getCountry(countryDetailReq.getCountryId()).toString();
     }
 }
