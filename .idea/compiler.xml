@@ -7,10 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="persistence-mongodb" />
-        <module name="persistence-mybatis-plus" />
-        <module name="persistence95" />
-        <module name="persistence-redis" />
         <module name="persistence-mybatis" />
+        <module name="persistence95" />
+        <module name="persistence-mybatis-plus" />
+        <module name="persistence-redis" />
       </profile>
     </annotationProcessing>
   </component>
