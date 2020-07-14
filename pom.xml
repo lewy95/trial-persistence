@@ -21,6 +21,7 @@
         <module>persistence-mybatis-plus</module>
         <module>persistence-mongodb</module>
         <module>persistence-redis</module>
+        <module>persistence-elasticsearch</module>
     </modules>
 
     <properties>
@@ -43,6 +44,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- springboot starter -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
