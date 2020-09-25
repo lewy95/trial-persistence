@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.mongodb.client.ListIndexesIterable;
 import com.mongodb.client.model.IndexOptions;
 import com.mongodb.client.model.Indexes;
-import com.mongodb.client.result.DeleteResult;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Sort;
@@ -124,8 +123,8 @@ public class MongodbHelper {
     /**
      * 根据key，value到指定集合删除数据
      *
-     * @param keys            键
-     * @param values          值
+     * @param keys           键
+     * @param values         值
      * @param collectionName 集合名
      */
     public void removeByKey(String[] keys, Object[] values, String collectionName) {
@@ -487,6 +486,7 @@ public class MongodbHelper {
     }
 
     // --------------------- 通用转换-------------------------------
+
     /**
      * 转换为ObjectId
      *
