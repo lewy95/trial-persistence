@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/persistence-mybatis/pom.xml" />
         <option value="$PROJECT_DIR$/persistence-mongodb/pom.xml" />
         <option value="$PROJECT_DIR$/persistence-mybatis-plus/pom.xml" />
+        <option value="$PROJECT_DIR$/persistence-elasticsearch/pom.xml" />
       </list>
     </option>
   </component>
