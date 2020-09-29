@@ -22,6 +22,7 @@
         <module>persistence-mongodb</module>
         <module>persistence-redis</module>
         <module>persistence-elasticsearch</module>
+        <module>persistence-redis-redisson</module>
     </modules>
 
     <properties>
