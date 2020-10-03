@@ -63,6 +63,8 @@ spring:
 mybatis:
   mapper-locations: classpath:mapping/*Mapper.xml
   type-aliases-package: cn.xzxy.lewy.mybatis.pojo
+  # 加载全局的配置文件
+  configLocation: classpath:mybatis/mybatis-config.xml
 
 #showSql
 logging:
