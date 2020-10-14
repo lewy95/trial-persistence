@@ -1,4 +1,4 @@
-package cn.xzxy.lewy.redission;
+package cn.xzxy.lewy.redisson;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
