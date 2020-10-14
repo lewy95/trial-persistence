@@ -35,17 +35,17 @@ public class CountryController {
     public JsonResponseEntity getCountry(@RequestBody CountryDetailReq countryDetailReq) {
 
         String jsonStr = null;
-        RBucket<String> messageIdCache = redissonClient.getBucket("LEWY_COUNTRY_" + countryDetailReq.getCountryId());
-        if (messageIdCache.isExists()) {
+        RBucket<String> rCache = redissonClient.getBucket("LEWY_COUNTRY_" + countryDetailReq.getCountryId());
+        if (rCache.isExists()) {
             log.info("============读取服务详情缓存成功，国家编号{}============", countryDetailReq.getCountryId());
-            jsonStr = messageIdCache.get();
+            jsonStr = rCache.get();
         } else {
             // 不存在则查询数据库，并且放入redis
             log.info("============缓存中没有该服务详情数据，进行数据库查询============");
             Country country = countryService.getCountry(countryDetailReq.getCountryId());
             jsonStr = JSONObject.toJSONString(country);
             // 写入缓存，过期时间为1h
-            messageIdCache.set(jsonStr, 1, TimeUnit.HOURS);
+            rCache.set(jsonStr, 1, TimeUnit.HOURS);
             log.info("============写入服务详情缓存成功，国家编号{}============", countryDetailReq.getCountryId());
         }
         return JsonResponseEntity.buildOK(JSONObject.parse(jsonStr));

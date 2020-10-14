@@ -11,6 +11,10 @@ spring:
   redis:
     redisson:
       configPath: redisson-single-dev.yml
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: ALWAYS
+    time-zone: GMT+8
   #数据库配置
   datasource:
     #1.JDBC
