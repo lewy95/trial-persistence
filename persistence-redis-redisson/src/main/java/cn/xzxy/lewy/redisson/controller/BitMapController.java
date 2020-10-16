@@ -15,6 +15,8 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 /**
+ * bitmap case
+ *
  * @author lewy95
  */
 @RestController
@@ -26,7 +28,7 @@ public class BitMapController {
     RedissonClient redissonClient;
 
     @PostMapping("/signIn")
-    public JsonResponseEntity signIn(@RequestBody @Valid UserSignInReq userSignInReq) throws Exception {
+    public JsonResponseEntity signIn(@RequestBody @Valid UserSignInReq userSignInReq) {
 
         // sign in start day (fixed)
         String startDate = "2020-10-01";

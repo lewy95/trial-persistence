@@ -18,6 +18,8 @@ import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * basic case
+ *
  * @author lewy95
  */
 @RestController

@@ -16,6 +16,8 @@ import javax.validation.Valid;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * distributed case
+ *
  * @author lewy95
  */
 @RestController
