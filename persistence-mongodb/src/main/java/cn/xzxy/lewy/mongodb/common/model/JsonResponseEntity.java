@@ -1,7 +1,7 @@
-package cn.xzxy.lewy.redisson.common.model;
+package cn.xzxy.lewy.mongodb.common.model;
 
 
-import cn.xzxy.lewy.redisson.common.util.FastJsonUtil;
+import cn.xzxy.lewy.mongodb.common.util.FastJsonUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

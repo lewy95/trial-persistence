@@ -1,5 +1,6 @@
 package cn.xzxy.lewy.mongodb.controller;
 
+import cn.xzxy.lewy.mongodb.common.model.JsonResponseEntity;
 import cn.xzxy.lewy.mongodb.dto.PlayerDto;
 import cn.xzxy.lewy.mongodb.service.PlayerMongoService;
 import cn.xzxy.lewy.mongodb.utils.MongodbHelper;
@@ -17,7 +18,7 @@ import java.util.List;
  * @author lewy
  */
 @RestController
-@RequestMapping("/rest/playerMongo")
+@RequestMapping("/rest/player")
 @Slf4j
 public class PlayerMongoController {
 
@@ -31,45 +32,44 @@ public class PlayerMongoController {
 
     // 查询集合中所有索引
     @PostMapping(value = "listIndexes")
-    public List listIndexes() {
-        return mongodbHelper.getAllIndexes(COLLECTION);
+    public JsonResponseEntity listIndexes() {
+        return JsonResponseEntity.buildOK(mongodbHelper.getAllIndexes(COLLECTION));
     }
 
     // 查询所有
     @PostMapping(value = "findAll")
-    public Object findAll() {
-
-        return mongodbHelper.findAll(new PlayerDto(), COLLECTION);
+    public JsonResponseEntity findAll() {
+        return JsonResponseEntity.buildOK(mongodbHelper.findAll(new PlayerDto(), COLLECTION));
     }
 
     // 根据匹配查询所有
     @PostMapping(value = "find")
-    public List find() {
+    public JsonResponseEntity find() {
 
         String[] findKeys = {"playerAge"};
         Object[] findValues = {20};
 
-        return mongodbHelper.find(new PlayerDto(), findKeys, findValues, COLLECTION);
+        return JsonResponseEntity.buildOK(mongodbHelper.find(new PlayerDto(), findKeys, findValues, COLLECTION));
     }
 
     // 根据匹配查询并排序
     @PostMapping(value = "findBySort")
-    public List findBySort() {
+    public JsonResponseEntity findBySort() {
 
         String[] findKeys = {"playerAge"};
         Object[] findValues = {20};
         String sortField = "playerNumber";
 
-        return mongodbHelper.findBySort(new PlayerDto(), findKeys, findValues, COLLECTION, sortField, 1);
+        return JsonResponseEntity.buildOK(mongodbHelper.findBySort(new PlayerDto(), findKeys, findValues, COLLECTION, sortField, 1));
     }
 
     // 根据匹配查询出符合的第一条数据
     @PostMapping(value = "findOne")
-    public Object findOne() {
+    public JsonResponseEntity findOne() {
         String[] findKeys = {"playerAge"};
         Object[] findValues = {20};
 
-        return mongodbHelper.findOne(new PlayerDto(), findKeys, findValues, COLLECTION);
+        return JsonResponseEntity.buildOK(mongodbHelper.findOne(new PlayerDto(), findKeys, findValues, COLLECTION));
     }
 
 
