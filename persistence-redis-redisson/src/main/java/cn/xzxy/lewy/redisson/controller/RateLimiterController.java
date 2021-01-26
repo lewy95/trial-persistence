@@ -44,7 +44,7 @@ public class RateLimiterController {
 
         int allThreadNum = 10; // set thread nums
         // if without rateLimiter, 10 threads get executed instantly
-        // if with rateLimiter, only 1 thread get executed per second
+        // if with rateLimiter, only 1 thread get executed per second, need 10 seconds to over
         CountDownLatch latch = new CountDownLatch(allThreadNum);
 
         long startTime = 0;
