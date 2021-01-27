@@ -24,8 +24,8 @@ public class PlayerMongoController {
 
     private static final String COLLECTION = "player";
 
-    @Resource
-    PlayerMongoService playerMongoService;
+    // @Resource
+    // PlayerMongoService playerMongoService;
 
     @Resource
     MongodbHelper mongodbHelper;
@@ -67,7 +67,7 @@ public class PlayerMongoController {
     @PostMapping(value = "findOne")
     public JsonResponseEntity findOne() {
         String[] findKeys = {"playerAge"};
-        Object[] findValues = {20};
+        Object[] findValues = {29};
 
         return JsonResponseEntity.buildOK(mongodbHelper.findOne(new PlayerDto(), findKeys, findValues, COLLECTION));
     }

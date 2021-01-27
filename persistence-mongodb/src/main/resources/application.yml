@@ -8,7 +8,12 @@ spring:
     name: persistence-mongodb
   data:
     mongodb:
-      uri: mongodb://192.168.37.103:27017/bayern
+      # 标准格式为:
+      # uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+      # 非分片集群，只需要配置 mongod 的地址即可
+      # uri: mongodb://192.168.37.103:27017/bayern
+      # 分片集群，需要配置是 mongos 地址
+      uri: mongodb://hadoop01:27011,hadoop02:27011,hadoop03:27011/bayern
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/sakila?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
