@@ -3,10 +3,16 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/persistence-elasticsearch" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/persistence-elasticsearch/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/persistence-mongodb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/persistence-mongodb/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/persistence-mybatis" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/persistence-mybatis-plus" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/persistence-mybatis-plus/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/persistence-mybatis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/persistence-redis" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/persistence-redis-redisson" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/persistence-redis-redisson/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/persistence-redis/src/main/java" charset="UTF-8" />
   </component>
 </project>
